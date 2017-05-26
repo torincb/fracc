@@ -15,28 +15,34 @@ public:
                ComplexPoint bottom_right,
                int          width_pixels);
 
-    void         generate(int iterations);
+    ~Mandelbrot();
 
-    ComplexPoint getTopLeft();
-    ComplexPoint getBottomRight();
-    ComplexPoint getPixelWidth();
-    ComplexPoint getPixelHeight();
+    void                  generate  (int iterations);
+    void                  writeToBMP(const char *filename) const;
 
-    void         setTopLeft    (ComplexPoint p);
-    void         setBottomRight(ComplexPoint p);
-    void         setPixelWidth (int n);
-    void         setPixelHeight(int n);
+    ComplexPoint          getTopLeft();
+    ComplexPoint          getBottomRight();
+    ComplexPoint          getPixelWidth();
+    ComplexPoint          getPixelHeight();
+
+    void                  setTopLeft    (ComplexPoint p);
+    void                  setBottomRight(ComplexPoint p);
+    void                  setPixelWidth (int n);
+    void                  setPixelHeight(int n);
 
 private:
-    ComplexPoint top_left;
-    ComplexPoint bottom_right;
+    ComplexPoint          top_left;
+    ComplexPoint          bottom_right;
 
-    int          width_pixels;
-    int          height_pixels;
+    int                   width_pixels;
+    int                   height_pixels;
 
     std::vector<uint32_t> img;
 
-    void         calculateDimensions();
+    bool                  generated;
+
+    void                  calculateDimensions();
+    void                  writeToPNG();
 };
 
 

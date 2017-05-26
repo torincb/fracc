@@ -4,6 +4,7 @@ list(APPEND SRCS
 	"${CURRENT_DIR}/main.cpp"
 	"${CURRENT_DIR}/FraccWindow.cpp"
     "${CURRENT_DIR}/Mandelbrot.cpp"
+    "${CURRENT_DIR}/MandelbrotTests.cpp"
 )
 
 set(SRCS "${SRCS}" PARENT_SCOPE)

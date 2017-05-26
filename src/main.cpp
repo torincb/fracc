@@ -1,7 +1,7 @@
 //#include <QApplication>
 //#include "FraccWindow.h"
 
-#include "Mandelbrot.h"
+#include "MandelbrotTests.h"
 
 int main(int argc, char **argv)
 {
@@ -12,9 +12,10 @@ int main(int argc, char **argv)
     //
     //return fracc.exec();
 
-    // temp: generate the Mandelbrot set
-    Mandelbrot mandelbrot;
-    mandelbrot.generate(100); //100 iteration test
-
+    // temp: Mandelbrot set performance testing
+    MandelbrotTests tests;
+    tests.serialCPUTimingTest();
+    tests.getMandelbrotInstance().writeToBMP("mandelbrot_test.bmp");
+ 
     return 0;
 }
