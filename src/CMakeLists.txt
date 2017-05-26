@@ -1,6 +1,11 @@
 get_filename_component(CURRENT_DIR "." ABSOLUTE)
 
-list(APPEND SRCS "${CURRENT_DIR}/main.cpp")
+list(APPEND SRCS
+	"${CURRENT_DIR}/main.cpp"
+	"${CURRENT_DIR}/FraccWindow.cpp"
+    "${CURRENT_DIR}/Mandelbrot.cpp"
+)
+
 set(SRCS "${SRCS}" PARENT_SCOPE)
 
 # Detect platform and include relevant files.

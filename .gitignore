@@ -36,3 +36,6 @@
 
 # Build dir(s)
 build/
+
+# CTags
+*.tags*

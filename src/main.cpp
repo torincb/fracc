@@ -1,8 +1,20 @@
-#include <cstdio>
-#include <SDL2/SDL.h>
+//#include <QApplication>
+//#include "FraccWindow.h"
+
+#include "Mandelbrot.h"
 
 int main(int argc, char **argv)
 {
-    printf("SDL_Init: %d\n", SDL_Init(SDL_INIT_VIDEO));
+    //QApplication fracc(argc, argv);
+    //	
+    //FraccWindow fracc_window;
+    //fracc_window.show();
+    //
+    //return fracc.exec();
+
+    // temp: generate the Mandelbrot set
+    Mandelbrot mandelbrot;
+    mandelbrot.generate(100); //100 iteration test
+
     return 0;
 }
