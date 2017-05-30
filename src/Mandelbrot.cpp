@@ -1,13 +1,15 @@
 #include "Mandelbrot.h"
+
 #include <algorithm>
-//#include <fstream>
 #include <cstdio>
 #include <iostream>
+#include <cmath>
+
 #include <png.h>
 #include <SDL.h>
 
 
-Mandelbrot::Mandelbrot() : Mandelbrot(-2.0 + 1.25i, 1.0 - 1.25i, 1920) {}
+Mandelbrot::Mandelbrot() : Mandelbrot(-2.0 + 1.25i, 1.0 - 1.25i, 4000) {}
 
 
 Mandelbrot::Mandelbrot(ComplexPoint top_left,
@@ -54,6 +56,19 @@ void Mandelbrot::generate(int iterations)
 
         for (int x = 0; x < width_pixels; ++x) {
 
+            c.real(top_left.real() + pixel_unit_x * x);
+
+            double q = pow(c.real() - 0.25, 2) + pow(c.imag(), 2);
+            if (q * (q + (c.real() - 0.25)) < 0.25 * pow(c.imag(), 2)) {
+                // point is within cardioid bulb, go onto next point
+                continue;
+            }
+
+            if (pow(c.real() + 1, 2) + pow(c.imag(), 2) < 1./16.) {
+                // point is within the period-2 bulb, go onto next point
+                continue;
+            }
+
             z = 0;
 
             // the famed Mandelbrot algorithm
@@ -64,16 +79,16 @@ void Mandelbrot::generate(int iterations)
                     // This pixel diverges, so we'll shade it according to how quickly it did so
                     // (grayscale only, for now)
 
-                    uint32_t shade = (uint32_t)((float)0xFF * (1.0 - (float)i / (float)iterations));
-                    uint32_t pixel = 0xFF000000 | (shade << 16) | (shade << 8) | shade;
+                    //uint32_t shade = (uint32_t)((float)0xFF * (1.0 - (float)i / (float)iterations));
+                    //uint32_t pixel = 0xFF000000 | (shade << 16) | (shade << 8) | shade;
+
+                    uint32_t pixel = 64.0 + (256.0 - 64.0) * log(1 + (double)i / (double)iterations) / log(2.0);
+                    pixel |= 0xFF000000;
 
                     img[x + y * width_pixels] = pixel;
                     break;
                 }
             }
-
-            // move 1 pixel along real axis
-            c.real(c.real() + pixel_unit_x);
         }
 
         // Move down 1 pixel on the imaginary axis (new row)

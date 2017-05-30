@@ -3,7 +3,7 @@ project(FRACC CXX)
 set(FRACC_VERSION_MAJOR 0)
 set(FRACC_VERSION_MINOR 1)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -O2")
 
 configure_file(
     "${PROJECT_SOURCE_DIR}/src/config.h.in"

@@ -22,7 +22,7 @@ void MandelbrotTests::serialCPUTimingTest()
 
     auto start = std::chrono::high_resolution_clock::now();
 
-    brot_instance.generate(100);
+    brot_instance.generate(400);
 
     auto end = std::chrono::high_resolution_clock::now();
 
