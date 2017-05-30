@@ -21,13 +21,9 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
 find_package(Qt5Widgets REQUIRED)
 
-# Other libraries
-find_package(PNG REQUIRED)
-include_directories(${PNG_INCLUDE_DIRS})
-
 # add subdirs (will create list of source files in SRCS)
 add_subdirectory("src")
 
 add_executable(fracc ${SRCS})
 
-target_link_libraries(fracc Qt5::Widgets ${SDL2_LIBRARY} ${PNG_LIBRARIES})
+target_link_libraries(fracc Qt5::Widgets ${SDL2_LIBRARY})
