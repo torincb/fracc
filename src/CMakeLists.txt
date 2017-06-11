@@ -1,8 +1,8 @@
 get_filename_component(CURRENT_DIR "." ABSOLUTE)
 
 list(APPEND SRCS
-	"${CURRENT_DIR}/main.cpp"
-	"${CURRENT_DIR}/FraccWindow.cpp"
+    "${CURRENT_DIR}/main.cpp"
+    #"${CURRENT_DIR}/FraccWindow.cpp"
     "${CURRENT_DIR}/Mandelbrot.cpp"
     "${CURRENT_DIR}/MandelbrotTests.cpp"
 )
