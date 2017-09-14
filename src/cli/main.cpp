@@ -1,8 +1,10 @@
 #include <cstdio>
+#include "compute.h"
 
 
 int main(int argc, char *argv[])
 {
-    printf("Welcome to fracc\nHave a nice day lmao\n");
-    return 0;
+    std::function<int(int)> closure = [](int n) -> int { return 5 * n; };
+
+    ComputeCacher cacher(closure);
 }
