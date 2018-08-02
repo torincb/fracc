@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>721</width>
+    <height>589</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>721</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menug">
+    <property name="title">
+     <string>f</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menua">
+    <property name="title">
+     <string>a</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menug_2">
+    <property name="title">
+     <string>g</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menug_3">
+    <property name="title">
+     <string>g</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuo">
+    <property name="title">
+     <string>o</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menut">
+    <property name="title">
+     <string>t</string>
+    </property>
+   </widget>
+   <addaction name="menug"/>
+   <addaction name="menua"/>
+   <addaction name="menug_2"/>
+   <addaction name="menug_3"/>
+   <addaction name="menuo"/>
+   <addaction name="menut"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
