@@ -5,7 +5,6 @@ import os.path as path
 import subprocess
 import sys
 from PySide2 import QtWidgets
-from MainWindow import MainWindow
 
 
 def setup_logging() -> None:
@@ -17,12 +16,12 @@ def setup_logging() -> None:
 
 def invoke_uic(file_path: str) -> None:
     """
-    Invokes pyside2-uic to convert a single path. If the command fails, its error output is shown and an exception is
+    Invokes pyside2-uic to convert a single UI file. If the command fails, its error output is shown and an exception is
     raised.
     """
     py_file_path = path.splitext(file_path)[0] + ".py"
 
-    logging.debug("Generating %s ...", py_file_path)
+    logging.info("Generating %s ...", py_file_path)
 
     call = ["pyside2-uic", "-o", py_file_path, file_path]
     result = subprocess.run(call, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -87,6 +86,9 @@ def main() -> None:
     generate_ui()
 
     app = QtWidgets.QApplication(sys.argv)
+
+    # DO NOT move this import to the top!
+    from MainWindow import MainWindow
 
     main_window = MainWindow()
     main_window.show()

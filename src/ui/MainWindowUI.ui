@@ -27,26 +27,41 @@
     <property name="title">
      <string>f</string>
     </property>
+    <addaction name="actiona"/>
+    <addaction name="actiong"/>
+    <addaction name="actiong_2"/>
+    <addaction name="actiono"/>
+    <addaction name="actiont"/>
    </widget>
    <widget class="QMenu" name="menua">
     <property name="title">
      <string>a</string>
     </property>
+    <addaction name="actiong_3"/>
+    <addaction name="actiong_4"/>
+    <addaction name="actiono_2"/>
+    <addaction name="actiont_2"/>
    </widget>
    <widget class="QMenu" name="menug_2">
     <property name="title">
      <string>g</string>
     </property>
+    <addaction name="actiong_5"/>
+    <addaction name="actiono_3"/>
+    <addaction name="actiont_3"/>
    </widget>
    <widget class="QMenu" name="menug_3">
     <property name="title">
      <string>g</string>
     </property>
+    <addaction name="actiono_4"/>
+    <addaction name="actiont_4"/>
    </widget>
    <widget class="QMenu" name="menuo">
     <property name="title">
      <string>o</string>
     </property>
+    <addaction name="actiont_5"/>
    </widget>
    <widget class="QMenu" name="menut">
     <property name="title">
@@ -61,17 +76,81 @@
    <addaction name="menut"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <widget class="QToolBar" name="toolBar">
-   <property name="windowTitle">
-    <string>toolBar</string>
+  <action name="actiona">
+   <property name="text">
+    <string>a</string>
    </property>
-   <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>false</bool>
-   </attribute>
-  </widget>
+  </action>
+  <action name="actiong">
+   <property name="text">
+    <string>g</string>
+   </property>
+  </action>
+  <action name="actiong_2">
+   <property name="text">
+    <string>g</string>
+   </property>
+  </action>
+  <action name="actiono">
+   <property name="text">
+    <string>o</string>
+   </property>
+  </action>
+  <action name="actiont">
+   <property name="text">
+    <string>t</string>
+   </property>
+  </action>
+  <action name="actiong_3">
+   <property name="text">
+    <string>g</string>
+   </property>
+  </action>
+  <action name="actiong_4">
+   <property name="text">
+    <string>g</string>
+   </property>
+  </action>
+  <action name="actiono_2">
+   <property name="text">
+    <string>o</string>
+   </property>
+  </action>
+  <action name="actiont_2">
+   <property name="text">
+    <string>t</string>
+   </property>
+  </action>
+  <action name="actiong_5">
+   <property name="text">
+    <string>g</string>
+   </property>
+  </action>
+  <action name="actiono_3">
+   <property name="text">
+    <string>o</string>
+   </property>
+  </action>
+  <action name="actiont_3">
+   <property name="text">
+    <string>t</string>
+   </property>
+  </action>
+  <action name="actiono_4">
+   <property name="text">
+    <string>o</string>
+   </property>
+  </action>
+  <action name="actiont_4">
+   <property name="text">
+    <string>t</string>
+   </property>
+  </action>
+  <action name="actiont_5">
+   <property name="text">
+    <string>t</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
