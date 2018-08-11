@@ -25,55 +25,28 @@
    </property>
    <widget class="QMenu" name="menug">
     <property name="title">
-     <string>f</string>
+     <string>File</string>
     </property>
-    <addaction name="actiona"/>
-    <addaction name="actiong"/>
-    <addaction name="actiong_2"/>
-    <addaction name="actiono"/>
-    <addaction name="actiont"/>
    </widget>
    <widget class="QMenu" name="menua">
     <property name="title">
-     <string>a</string>
+     <string>Edit</string>
     </property>
-    <addaction name="actiong_3"/>
-    <addaction name="actiong_4"/>
-    <addaction name="actiono_2"/>
-    <addaction name="actiont_2"/>
    </widget>
    <widget class="QMenu" name="menug_2">
     <property name="title">
-     <string>g</string>
+     <string>View</string>
     </property>
-    <addaction name="actiong_5"/>
-    <addaction name="actiono_3"/>
-    <addaction name="actiont_3"/>
    </widget>
    <widget class="QMenu" name="menug_3">
     <property name="title">
-     <string>g</string>
-    </property>
-    <addaction name="actiono_4"/>
-    <addaction name="actiont_4"/>
-   </widget>
-   <widget class="QMenu" name="menuo">
-    <property name="title">
-     <string>o</string>
-    </property>
-    <addaction name="actiont_5"/>
-   </widget>
-   <widget class="QMenu" name="menut">
-    <property name="title">
-     <string>t</string>
+     <string>Help</string>
     </property>
    </widget>
    <addaction name="menug"/>
    <addaction name="menua"/>
    <addaction name="menug_2"/>
    <addaction name="menug_3"/>
-   <addaction name="menuo"/>
-   <addaction name="menut"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actiona">

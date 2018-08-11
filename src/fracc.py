@@ -14,22 +14,68 @@ def setup_logging() -> None:
     logging.config.fileConfig("logging.ini")
 
 
-def invoke_uic(file_path: str) -> None:
+def setup_simple_logging() -> None:
+    """
+    Sets up a console handler which receives all logs of all levels. Useful for dev purposes.
+    """
+    logging.config.dictConfig({
+        "version": 1,
+        "handlers": {
+            "console": {
+                "class": "logging.StreamHandler",
+                "formatter": "simple",
+                "stream": sys.stdout
+            }
+        },
+        "formatters": {
+            "simple": {
+                "format": r"%(asctime)s - %(levelname)s: %(message)s",
+                "datefmt": r"%H:%M:%S"
+            }
+        },
+        "root": {
+            "level": "DEBUG",
+            "handlers": ["console"]
+        }
+    })
+
+
+def generate_ui() -> None:
+    """
+    Generates all the UI files in the project, using the pyside2-uic script. Currently assumes all UI files are in
+    directories named 'UI', at any level within this script's directory.
+    """
+    logging.debug("Generating UI...")
+
+    root_path = path.dirname(path.abspath(__file__))
+    logging.debug(f"Source root: {root_path}")
+
+    for dirname, _, filenames in os.walk(root_path):
+        if path.basename(dirname) == "UI":
+            for filename in filenames:
+                if path.splitext(filename)[1].lower() == ".ui":
+                    file_path = path.join(dirname, filename)
+
+                    if not _is_generated(file_path):
+                        _invoke_uic(file_path)
+
+
+def _invoke_uic(file_path: str) -> None:
     """
     Invokes pyside2-uic to convert a single UI file. If the command fails, its error output is shown and an exception is
     raised.
     """
     py_file_path = path.splitext(file_path)[0] + ".py"
 
-    logging.info("Generating %s ...", py_file_path)
+    logging.info(f"Generating {py_file_path} ...")
 
     call = ["pyside2-uic", "-o", py_file_path, file_path]
     result = subprocess.run(call, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
     if result.returncode != 0:
         call_str = " ".join(['"' + arg + '"' if " " in arg else arg for arg in call])
-        logging.critical("command failed (exit status %d): %s", result.returncode, call_str)
-        logging.critical("with output:\n%s", result.stderr.decode())
+        logging.critical(f"command failed (exit status {result.returncode}): {call_str}")
+        logging.critical(f"with output:\n{result.stderr.decode()}")
 
         # (Try to) delete the failed file (it still produces an empty file upon failure)
         try:
@@ -40,7 +86,7 @@ def invoke_uic(file_path: str) -> None:
         raise RuntimeError("Failed to generate UI file: %s" % file_path)
 
 
-def is_generated(file_path: str) -> bool:
+def _is_generated(file_path: str) -> bool:
     """
     Given the path to a .ui file, checks whether a corresponding .py file exists and is newer than the .ui file. Returns
     True if these conditions are met, and False otherwise.
@@ -60,22 +106,7 @@ def is_generated(file_path: str) -> bool:
     return True
 
 
-def generate_ui() -> None:
-    """
-    Generates all the UI files in the project, using the pyside2-uic script. Currently assumes all UI files are in the
-    'ui' directory within this script's directory.
-    """
-    ui_path = path.join(path.dirname(path.abspath(__file__)), "ui")
-    for dirname, _, filenames in os.walk(ui_path):
-        for filename in filenames:
-            if path.splitext(filename)[1].lower() == ".ui":
-                file_path = path.join(dirname, filename)
-
-                if not is_generated(file_path):
-                    invoke_uic(file_path)
-
-
-def main() -> None:
+def _main() -> None:
     """
     Serves as fracc's entry point. Initializes the GUI and runs the QT application.
     """
@@ -88,9 +119,9 @@ def main() -> None:
     app = QtWidgets.QApplication(sys.argv)
 
     # DO NOT move this import to the top!
-    from MainWindow import MainWindow
+    from Interface.MainWindow import MainWindow
 
-    main_window = MainWindow()
+    main_window = MainWindow(app)
     main_window.show()
     app.exec_()
 
@@ -98,4 +129,4 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    _main()
