@@ -1,7 +1,7 @@
 from PySide2.QtWidgets import QWidget
 
 from Interface.MainWindow import Communicate
-from Interface.UI.RenderControlWidget import Ui_RenderControlWidget
+from Interface.UI.RenderControlWidgetUI import Ui_RenderControlWidget
 
 
 class RenderControlWidget(QWidget, Ui_RenderControlWidget):

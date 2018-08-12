@@ -1,5 +1,4 @@
-from PySide2.QtCore import QObject
-from PySide2.QtCore import Signal
+from PySide2.QtCore import QObject, Signal
 
 
 class Communicate(QObject):
